@@ -16,3 +16,7 @@ ygrd, trans = genrouwenhorst(rho,sigma_eps,N,T)
 # ygrd is NxT array of grid values, with columns representing time period
 # trans is the NxNxT transition matrix. I.e., `trans[1,2,2]' is the probability of transition from node 1 to node 2 in the second period.
 ```
+
+## Julia code for standard Rouwenhorst methods:
+- [QuantEcon.jl](http://quantecon.github.io/QuantEcon.jl/latest/api/QuantEcon.html#QuantEcon.rouwenhorst)
+- [Gustavo Pereira](https://github.com/pereiragc/rouwenhorst)
