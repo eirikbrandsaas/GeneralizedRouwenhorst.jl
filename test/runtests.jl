@@ -47,6 +47,30 @@ using Test
     @test isequal(round.(ygrd;digits=4),ygrd_Matlab)
     @test isequal(round.(trans;digits=4),trans_Matlab)
     
+    ####################
+    ## Matlab code (in addition to the lcrouwnehorst from https://github.com/gfell/nsmarkov-matlab/blob/master/lcrouwenhorst.m)
+    
+    # T = 3;
+    # N = 2;
+    # rho = 0.95;
+    # rho = ones(T,1)*rho;
+    # sigma_eps=0.1;
+    # sigma_eps=ones(T,1)*sigma_eps
+    # [ygrd,trans] = lcrouwenhorst(rho,sigma_eps,N,T)
+
+    # T = 3;
+    # N = 2;
+    # rho = [0.95,0.95,0.9]
+    # sigma_eps=ones(T,1)*sigma_eps
+    # [ygrd,trans] = lcrouwenhorst(rho,sigma_eps,N,T)
+
+
+    # T = 3;
+    # N = 3;
+    # rho = [0.95,0.95,0.9]
+    # sigma_eps=[0.1,0.5,0.1]
+    # [ygrd,trans] = lcrouwenhorst(rho,sigma_eps,N,T)
+    
 end
 
 @testset "Test Assertions/Errors" begin
