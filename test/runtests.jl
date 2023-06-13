@@ -1,4 +1,4 @@
-using Rouwenhorst
+using GeneralizedRouwenhorst
 using Test
 using QuantEcon
 

@@ -1,4 +1,4 @@
-module Rouwenhorst
+module GeneralizedRouwenhorst
 
 """
     genrouwenhorst(rho,sigma_eps,N,T)
