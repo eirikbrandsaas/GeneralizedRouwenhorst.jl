@@ -109,6 +109,6 @@ end
     @test isapprox(trans[:,:,T],mc.p[:,:])
 
     for it in 1:T÷5:T
-        @test typeof(MarkovChain(trans[:,:,it] - rand(N,N),ygrd[:,it])) == MarkovChain{Float64, Matrix{Float64}, Vector{Float64}} # Test that it always outputs matrices that satisfies requirements
+        @test typeof(MarkovChain(trans[:,:,it],ygrd[:,it])) == MarkovChain{Float64, Matrix{Float64}, Vector{Float64}} # Test that it always outputs matrices that satisfies requirements
     end
 end
