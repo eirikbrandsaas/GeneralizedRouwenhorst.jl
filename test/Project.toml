@@ -1,0 +1,3 @@
+[deps]
+QuantEcon = "fcd29c91-0bd7-5a09-975d-7ac3f643a60c"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

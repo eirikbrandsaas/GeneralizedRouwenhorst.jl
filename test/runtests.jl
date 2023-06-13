@@ -1,6 +1,8 @@
 using Rouwenhorst
 using Test
+using QuantEcon
 
+##
 @testset "Test results compared to original Matlab file" begin
     N = 2
     T = 3
@@ -83,4 +85,30 @@ end
     @test_throws AssertionError genrouwenhorst(rho[1:1],sigma_eps,N,N)
     @test_throws AssertionError genrouwenhorst(rho,sigma_eps[1:1],N,N)
     @test_throws AssertionError genrouwenhorst(rho,fill(0.1,N+1),N,N)
+end
+
+@testset "Test that output matches QuantEcon routes" begin
+    ## First do generalized Rouwenhort
+    N = 5
+    T = 200
+    rho = fill(0.95,T)
+    sigma_eps = fill(0.1,T)
+
+    ygrd, trans = genrouwenhorst(rho,sigma_eps,N,T)
+    ## Then do "standard" Rouwenhorst (From QuantEcon)
+
+
+    σ = sigma_eps[1]
+    ρ = rho[1]
+    μ = 0.0
+    mc = rouwenhorst(N,ρ,σ,μ)
+
+
+    ## Test that they are equal at end
+    @test isapprox(ygrd[:,T],mc.state_values[:])
+    @test isapprox(trans[:,:,T],mc.p[:,:])
+
+    for it in 1:T÷5:T
+        @test typeof(MarkovChain(trans[:,:,it] - rand(N,N),ygrd[:,it])) == MarkovChain{Float64, Matrix{Float64}, Vector{Float64}} # Test that it always outputs matrices that satisfies requirements
+    end
 end
